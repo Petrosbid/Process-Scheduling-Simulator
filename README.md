@@ -25,7 +25,7 @@ This project is a Process Scheduling Simulator that allows you to test and analy
 
 ![Screenshot 2025-01-27 230106](https://github.com/user-attachments/assets/864c7b33-4ea9-44b0-b182-030103154a4c)
 ![Screenshot 2025-01-27 230124](https://github.com/user-attachments/assets/1107ec48-3908-4e65-902f-e4d1813fdac7)
-  - charts from left to right for each process:
+  - charts parts from left to right for each process:
       1. Tr/Ts
       2. Turn around time(Response time)
       3. Finish Time (terminate time)
