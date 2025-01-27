@@ -1,0 +1,69 @@
+﻿<Window x:Class="operation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        Title="Process Scheduling Simulator" Height="715" Width="860">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF5C7285" Offset="0.115"/>
+            <GradientStop Color="#FFE2E0C8" Offset="1"/>
+            <GradientStop Color="#FF818C78" Offset="0.381"/>
+            <GradientStop Color="#FFA7B49E" Offset="0.654"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Margin="0,0,0,-6">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Algorithm Selection -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,10,10,10">
+            <Label Content="Select Algorithm:" VerticalAlignment="Center" Foreground="White"/>
+            <ComboBox x:Name="AlgorithmComboBox" Width="150" Margin="10,0" SelectionChanged="AlgorithmComboBox_SelectionChanged">
+                <ComboBoxItem Content="FCFS"/>
+                <ComboBoxItem Content="RR"/>
+                <ComboBoxItem Content="SPN"/>
+                <ComboBoxItem Content="SRT"/>
+                <ComboBoxItem Content="FeedBack"/>
+                <ComboBoxItem Content="HRRN"/>
+            </ComboBox>
+            <TextBox x:Name="QuantumTextBox" Width="100" Margin="10,0" Visibility="Collapsed" />
+        </StackPanel>
+
+        <!-- Process Input Table -->
+        <DataGrid x:Name="ProcessDataGrid" Grid.Row="1" Margin="4,13,520,371" AutoGenerateColumns="False" CanUserAddRows="True" Background="#FFC2C2C2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="80" Header="Process ID" Binding="{Binding ProcessId}"/>
+                <DataGridTextColumn Width="80" Header="Arrival Time" Binding="{Binding ArrivalTime}"/>
+                <DataGridTextColumn Width="80" Header="ServiceTime" Binding="{Binding ServiceTime}"/>
+                <DataGridTextColumn Width="80" Header="Process Size" Binding="{Binding Processsize}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!-- Algorithm Analysis -->
+        <Button Content="Run" Click="RunButton_Click" Margin="600,10,165,10"/>
+        <Button Content="Add Process" Click="AddProcessButton_Click" Margin="503,10,265,10"/>
+        <Button Content="Delete Process" Click="DeleteProcessButton_Click" Margin="402,10,362,10"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="345,13,15,370">
+            <Label Content="Algorithm Analysis:" FontWeight="Bold" Background="{x:Null}" Foreground="White"/>
+            <TextBlock x:Name="AnalysisTextBlock" TextWrapping="Wrap"/>
+        </StackPanel>
+        <lvc:CartesianChart x:Name="result" Visibility="Visible" Margin="230,52,246,-273" Grid.Row="1" RenderTransformOrigin="0.5,0.5" ScrollBarFill="{x:Null}" Foreground="Black" >
+            <lvc:CartesianChart.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.063"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </lvc:CartesianChart.RenderTransform>
+        </lvc:CartesianChart>
+        <Label Content="Queue:" Margin="695,10,100,10" Foreground="White"/>
+        <ComboBox x:Name="Queue" Margin="770,10,10,10">
+            <ComboBoxItem Content="Single"/>
+            <ComboBoxItem Content="Mulitple"/>
+        </ComboBox>
+
+    </Grid>
+
+</Window>
